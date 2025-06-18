@@ -14,7 +14,7 @@ router.get("/profile", authCheck, async (req, res) => {
     const user = await UserModel.findById(req.user).select("name email");
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    res.json({
+    res.status(200).json({
       message: `You're Logged In: Welcome ${user.name}`,
       user: {
         id: user._id,

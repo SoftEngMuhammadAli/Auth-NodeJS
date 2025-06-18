@@ -44,13 +44,13 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
 
     const token = generateToken(user._id);
-    res.status(200).json({
+    return res.status(200).json({
       token,
       user: { id: user._id, name: user.name, email: user.email },
       message: `User ${user.name} is Logged In Successfully!`,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
