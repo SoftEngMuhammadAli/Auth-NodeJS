@@ -10,7 +10,7 @@ const authCheck = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded.userId; // save user id to req
+    req.user = decoded.userId;
     next();
   } catch (err) {
     return res.status(401).json({ message: "Invalid or expired token" });
