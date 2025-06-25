@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
+import { signup, login } from "../controllers/auth_controller.js";
+import authCheck from "../middlewares/auth_middleware.js";
+import { UserModel } from "../models/auth_model.js";
 const router = express.Router();
-const { signup, login } = require("../controllers/auth_controller");
-const authCheck = require("../middlewares/auth_middleware");
-const { UserModel } = require("../models/auth_model");
 
 // Public routes
 router.post("/signup", signup);
